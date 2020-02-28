@@ -1,4 +1,4 @@
-const arsenal = ["Rock", "Paper", "Scissor"];
+const arsenal = ["rock", "paper", "scissor"];
 
 function initialize()
 {
@@ -41,7 +41,7 @@ function iVars()
     console.log(p2ArsenalD + "p2");
 
     //the array is always changing, so I use variables that store default values.
-    p1Arsenal = [p1ArsenalD[0], p1ArsenalD[1], p1ArsenalD[2]]; //[0] = Rock, [1] = Paper, [2] = Scissor//
+    p1Arsenal = [p1ArsenalD[0], p1ArsenalD[1], p1ArsenalD[2]]; //[0] = rock, [1] = paper, [2] = scissor//
     p2Arsenal = [p2ArsenalD[0], p2ArsenalD[1], p2ArsenalD[2]];
     console.log(p2Arsenal);
     
@@ -100,7 +100,7 @@ function resetGame()
     p2PrevPlay = "";
     prevResult = "";
     
-    p1Arsenal = [p1ArsenalD[0], p1ArsenalD[1], p1ArsenalD[2]]; //[0] = Rock, [1] = Paper, [2] = Scissor//
+    p1Arsenal = [p1ArsenalD[0], p1ArsenalD[1], p1ArsenalD[2]]; //[0] = rock, [1] = paper, [2] = scissor//
     p2Arsenal = [p2ArsenalD[0], p2ArsenalD[1], p2ArsenalD[2]];
     
     p1PlayInRowCount = 1;
@@ -167,7 +167,7 @@ function resetBoth()
     p2PrevPlay = "";
     prevResult = "";
     
-    p1Arsenal = [p1ArsenalD[0], p1ArsenalD[1], p1ArsenalD[2]]; //[0] = Rock, [1] = Paper, [2] = Scissor//
+    p1Arsenal = [p1ArsenalD[0], p1ArsenalD[1], p1ArsenalD[2]]; //[0] = rock, [1] = paper, [2] = scissor//
     p2Arsenal = [p2ArsenalD[0], p2ArsenalD[1], p2ArsenalD[2]];
     
     p1PlayInRowCount = 1;
@@ -427,17 +427,17 @@ function hierarchy(rps)
 {
     var winner;
 
-    if (rps == "Rock")
+    if (rps == "rock")
     {
-        winner = "Paper";
+        winner = "paper";
     }
-    if (rps == "Paper")
+    if (rps == "paper")
     {
-        winner = "Scissor";
+        winner = "scissor";
     }
-    if (rps == "Scissor")
+    if (rps == "scissor")
     {
-        winner = "Rock";
+        winner = "rock";
     }
 
     return winner;
@@ -446,11 +446,11 @@ function hierarchy(rps)
 /*Returns the position of a pick from the arsenal in order to subtract the weapon counts.*/
 function aWeaponPosition(pick)
 {
-    if(pick == "Rock")
+    if(pick == "rock")
         return 0;
-    if(pick == "Paper")
+    if(pick == "paper")
         return 1;
-    if(pick == "Scissor")
+    if(pick == "scissor")
         return 2;
 }
 
