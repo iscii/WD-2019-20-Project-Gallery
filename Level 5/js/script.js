@@ -140,12 +140,16 @@ function run(){
         }
     }
 }
+function reset(){ //refreshes page (can't simply reset values and display since storing every value of every simulation would take up too much memory)
+    location.reload();
+}
 function simulate(){ //split into functions primarily for organization and readability
     simNum++; //update simulation number
     console.log("SIM " + simNum);
     semiVars();
     dynamicVars();
     dispOrder();
+    console.log("1: " + opSims.innerHTML);
     for(time; time > 0; time -= (orderTime + breakTime)){
         numOrder++;
         console.log("--------------------------------------------- ORDER [" + numOrder + "] ---------------------------------------------");
@@ -165,6 +169,7 @@ function simulate(){ //split into functions primarily for organization and reada
         dispReceipt();
         dynamicVars();
     }
+    console.log("2: " + opSims.innerHTML);
     display();
     console.log("[Note] Remaining time: " + time);
 }
@@ -435,7 +440,7 @@ function dispReceipt(){ //called per order iteration of a simulation
     if(paymentMethod == "Cash")
         eReceipt += "<br/><span class = 'paymentchange'><span class = 'changehead'>Change</span><span class = 'changevalue'>" + change + "</span></span>";
     eReceipt += "</span>";
-
+    
     opSims.innerHTML += eReceipt;
 }
 function dispSimTotals(){ //these get a bit redundant since i didn't plan it aaaaugh
