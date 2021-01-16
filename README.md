@@ -1,3 +1,1 @@
-https://isciiz.web.app/   
-Project files can be found in https://github.com/iscii/Web-Development-2019-2020
-
+https://isciiz.web.app/
