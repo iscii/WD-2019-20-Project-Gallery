@@ -1,0 +1,5 @@
+Note: if github workflow does not deploy, the firebase login token is expired. Get a new token with
+	$ firebase login:ci and update the secrets variable in the repo settings
+	if firebase is not a command, you'll have to login at the root directory of npm at C:\Users\User\AppData\Roaming\npm
+	if it is not a command there, you'll have to add that path to PATH in environment variables
+

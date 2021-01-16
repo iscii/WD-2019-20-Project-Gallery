@@ -1,0 +1,5 @@
+- css lol
+- put every project in one page. load them differently upon buttons tho. like have a slider or smtn
+- add link to aster
+- add link to isciiBot
+- add link to install unity games
