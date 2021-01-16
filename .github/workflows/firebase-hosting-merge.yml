@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: firebase deploy --token "$FIREBASE_TOKEN"
+      - run: sudo npm install -g firebase-tools && firebase deploy --token 1//0duQ7UlOA0m1YCgYIARAAGA0SNwF-L9IrOcb9aMOTisiJNLJQ9beFXXmpCu3XXkjKjVQh4Gbp7ot6n641doQtIiOpQKXjgBsoZIE
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
