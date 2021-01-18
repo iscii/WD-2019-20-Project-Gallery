@@ -1,31 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
 
 <head>
+	
 	<title>iscii</title>
+	<script src="js/theme.js"></script>
+	<script src="js/script.js"></script>
 	<link rel="stylesheet" href="css/style.css" />
 	<style>
 
 	</style>
-	<script src="js/script.js"></script>
 	<script>
 
 	</script>
 </head>
 
-<body>
+<body onload="inittheme(); init();">
 	<div id="sidebar">
-		<button id="themebtn" onclick="toggleTheme()">theme</button>
+		<label id="themeswitch" class="switch">
+			<input type="checkbox">
+			<span onclick="toggleTheme()" class="slider noselect">
+			L&nbsp;&nbsp;&nbsp;D
+			</span>
+		</label>
 	</div>
 	<div id="container">
 		<div id="navbar">
 			<div> Issac Zheng &lt;iscii&gt;</div>
+			<div class="category-container" id="categories">
+				<div class="category">
+					<div class="category-container category-item"></div>
+				</div>
+			</div>
 		</div>
 		<div id="content-container">
 		</div>
 	</div>
-
-
 
 
 	<!--! Firebase API -->
