@@ -26,14 +26,64 @@
 	</div>
 	<div id="container">
 		<div id="navbar">
-			<div> Issac Zheng &lt;iscii&gt;</div>
+			<div id="profile">
+				Issac Zheng &lt;iscii&gt;
+			</div>
 			<div class="category-container" id="categories">
 				<div class="category">
-					<div class="category-container category-item"></div>
+					<div class="category-title">
+						Links
+					</div>
+				</div>
+				<div class="category">
+					<div class="category-title">
+						isciiBot
+					</div>
+				</div>
+				<div class="category category-dropdown">
+					<div class="category-title">
+						Web Development <!--when clicked, reveal general description of web dev-->
+					</div>
+					<div class="category-item" onclick="loadL1();">
+						Level 1
+					</div>
+					<div class="category-item" onclick="loadL2();">
+						Level 2
+					</div>
+					<div class="category-item" onclick="loadL3();">
+						Level 3
+					</div>
+					<div class="category-item" onclick="loadL4();">
+						Level 4
+					</div>
+					<div class="category-item" onclick="loadL5();">
+						Level 5
+					</div>
+					<div class="category-item" onclick="loadL6();">
+						Level 6
+					</div>
+					<div class="category-item" onclick="loadL7();">
+						Level 7
+					</div>
+				</div>
+				<div class="category">
+					<div class="category-title">
+						Games
+					</div>
+					<div class="category-item">
+						Headache
+					</div>
 				</div>
 			</div>
 		</div>
 		<div id="content-container">
+			<div id="content-desc">
+				
+			</div>
+			
+			<div id="content">
+
+			</div>
 		</div>
 	</div>
 
@@ -70,7 +120,7 @@
 		};
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
+		//firebase.analytics();
 	</script>
 
 	<!-- Initialize Firebase -->
