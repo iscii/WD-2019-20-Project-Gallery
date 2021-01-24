@@ -15,9 +15,9 @@
 		<div id = "tallies"></div>
 		<div id = "gamedisplay">
 			<div id = "p2-3Holder">
-				<div class = "strikes" id = "p4strikes"></div>
-				<div class = "strikes" id = "p3strikes"></div>
-				<div class = "strikes" id = "p2strikes"></div>
+				<div class = "playerlabel" id = "p4label">P4 <br/>Strikes: <span id = "p4strikes"></span></div>
+				<div class = "playerlabel" id = "p3label">P3 <br/>Strikes: <span id = "p3strikes"></span></div>
+				<div class = "playerlabel" id = "p2label">P2 <br/>Strikes: <span id = "p2strikes"></span></div>
 				<div class = "playerhand" id = "p3disp"></div>
 			</div>
 			<div id = "middle">
@@ -26,9 +26,9 @@
 					<div class = "eventsabsolute" style = "margin-top: -2%">
 						<div id = "playerevents" class = "eventsrelative"></div>
 					</div>
-					<span id = "discardpile">
+					<span id = "discardpile"> <!--.appendChild this one-->
 						<span id = "discardpilelabel" class = "pilelabel">Discard</span><br/>
-						<span id = "topdiscardanim"><img id = "topdiscardcard" src = "images/cards/empty.png" onclick = "players[p1].drawCards(1, discardpile, true);"/></span>
+						<span id = "topdiscardanim"><img id = "topdiscardcard" src = "images/cards/empty.png" onclick = "players[p1].drawCards(1, discardpile, true);"/></span><!--todo: make this not have a transform when hovered and clicked-->
 						<img id = "bottomdiscardcard" src = "images/cards/empty.png"/> <!--!Use z-index-->
 					</span>
 					<span id = "knockblock">
@@ -37,7 +37,7 @@
 					</span>
 					<span id = "deckpile">
 						<span id = "deckpilelabel" class = "pilelabel">Deck</span><br/>
-						<span id = "topdeckanim"><img id = "topdeckcard" src = "images/cards/back-red-75-3.png" onclick = "players[p1].drawCards(1, deckpile, true);"/> </span>
+						<span id = "topdeckanim"><img id = "topdeckcard" src = "images/cards/back-red-75-3.png" onclick = "players[p1].drawCards(1, deckpile, true);"/> </span><!--todo: make this have a transform when hovered and clicked-->
 						<img id = "bottomdeckcard" src = "images/cards/back-red-75-3.png" />
 					</span>
 					<div class = "eventsabsolute" style = "margin-top: 3%;">
@@ -48,7 +48,7 @@
 			</div>
 			<div id = "p1-4Holder">
 				<div class = "playerhand" id = "p1disp"></div>
-				<div class = "strikes" id = "p1strikes"></div>
+				<div class = "playerlabel" id = "p1label">P1 <br/>Strikes: <span id = "p1strikes"></span></div>
 			</div>
 			<div id = "rcHolder"> <button id = "reStart" onclick = "if(!round) startRound(); else initialize();"></button> <img hidden id = "roundController" src = "images/arrow.png" onclick = "startRound();"/></div>
 		</div>
@@ -65,7 +65,7 @@
 					- The initial turn of each round will be the player after the dealer, clockwise. <br/>
 					<span class = "instheader">Gameplay</span><br/>
 					- To start a match, click the Start button on the bottom left. <br/>
-					- On your turn, you may: <br/>
+					- On your turn, you may: <br/> <!-- should probably make use of spans instead of spamming &nbsp -->
 					<span class = "innote">- Knock, to end your turn and initiate the end of the round, which will occur upon your next turn.</span> <br/>
 					<span class = "innote">You may not knock after drawing.</span> <br/>
 					<span class = "innote">- or draw, from either the deck or the discard pile.</span>  <br/>
@@ -88,6 +88,5 @@
 				</div>
 			</div>
 		</div>
-		<a style = "position: absolute; top: 1%; left: 95%;" href = "../index.html">Back to Gallery Menu</a>
 	</body>
 </html>

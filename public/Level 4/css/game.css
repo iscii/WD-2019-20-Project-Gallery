@@ -73,10 +73,3 @@ a#instructions
     color: lightcoral;
     text-decoration: none;
 }
-
-a#gallerymenu
-{
-    position: absolute;
-    top: 10px;
-    left: 30px;
-}

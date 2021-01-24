@@ -1,46 +1,18 @@
+const LEVELDESC = ["Level 1 desc", "Level 2 desc", "Level 3 desc", "Level 4 desc", "Level 5 desc", "Level 6 desc", "Level 7 desc"];
+const LEVELLINK = ["Level 1 link", "Level 2 link", "Level 3 link", "Level 4 link", "Level 5 link", "Level 6 link", "Level 7 link"];
+
 function init() {
-    
+
 }
-//can totally simplify the loads into one function
-function loadL1() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 1/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 1";
-}
-function loadL2() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 2/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 2";
-}
-function loadL3() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 3/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 3";
-}
-function loadL4() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 4/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 4";
-}
-function loadL5() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 5/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 5";
-}
-function loadL6() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 6/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 6";
-}
-function loadL7() {
-    let content=document.getElementById("content");
-    content.innerHTML="<object class='levelcontent' type='text/html' data='Level 7/index.html'></object>";
-    content.className+="content-level";
-    document.getElementById("content-desc").innerHTML="Level 7";
+
+function loadLevel(level) {
+    let content = document.getElementById("content");
+    var obj = document.createElement("object");
+    obj.type = "text/html";
+    obj.data = "Level " + level + "/index.html";
+    obj.className += "levelcontent";
+    content.replaceChild(obj, content.lastChild);
+    document.getElementById("content-desc").innerHTML = "Level " + level;
+    document.getElementById("content-desc").innerHTML += "\n"+LEVELDESC[level - 1];
+    document.getElementById("content-desc").innerHTML += "\n"+LEVELLINK[level - 1];
 }

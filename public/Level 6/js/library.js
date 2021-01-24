@@ -124,6 +124,7 @@ Player.prototype.determineHandValue = function(newcard, cpudiscard, drawing) //m
                 paircount++;
         if(paircount == 2) //highly unlikely but addresses having two pairs of matching rank cards.
         {
+            console.log("[Note] double pair");
             return getRandomInteger(0, 3);
         }
 
@@ -140,6 +141,7 @@ Player.prototype.determineHandValue = function(newcard, cpudiscard, drawing) //m
                     if(this.hand[unmatch[1]] < this.hand[unmatch[0]])
                         return unmatch[1];
 
+                console.log("[Note] unmatch position: " + unmatch[0]);
                 return unmatch[0];
             }
         }
@@ -156,18 +158,22 @@ Player.prototype.determineHandValue = function(newcard, cpudiscard, drawing) //m
             }
         }
 
+        console.log(" --------------------------- "); //!
+
         //find the lowest value suitTotal
         for(var i = 1; i < suitTotals.length; i++)
             if(suitTotals[i] < suitTotals[lowestsuit] && suitTotals[i] != 0) //skips the 0s
                 lowestsuit = i;
 
+        console.log("Suit " + lowestsuit); //!        
         var lowestranks = [];
 
         //find the lowest value cards in that suit group
         for(i = 0; i < this.hand.length; i++)
             if(this.hand[i].suit == lowestsuit)
-                lowestranks.push(this.hand[i].rank);
+                lowestranks.push(this.hand[i].rank); //!5/9/2020
         
+        console.log("Ranks " + lowestranks); //!
         var lowestvalue = lowestranks[0];
 
         //find the lowest value card.
@@ -176,14 +182,20 @@ Player.prototype.determineHandValue = function(newcard, cpudiscard, drawing) //m
                 if(lowestranks[i] < lowestvalue)
                     lowestvalue = lowestranks[i];
 
+        console.log("Value " + lowestvalue); //!   
+                 
         //find the card's position in the hand
         for(i = 0; i < this.hand.length; i++)
             if(this.hand[i].suit == lowestsuit && this.hand[i].rank == lowestvalue)
                 value = i;
 
+        console.log("Position " + value); //!
+        console.log(" ---------------------------- "); //!
+
         return value; //just reusing value variable since it's returned anyway
     }
 
+    //console.log(value); //!
     return value;
 }
 
@@ -191,11 +203,20 @@ Player.prototype.drawCards = function(quantity, pile, isPlayer) //*it's hard to 
 {
     if(isPlayer)
     {
-        if(!userTurn || canDiscard == true || players[turn].knocked || !players[turn].strikes) return; //i'm using userTurn because I need it to be controlled by the game() function - the turn is updated early, but the user UI may only be interacted with after the intervals are cleared, which is determined by game()'s call in cpuMoves. Otherwise it'd cause problems with the intervals.
+        if(!userTurn || canDiscard == true || players[turn].knocked || !players[turn].strikes || awaitNextRound) return; //i'm using userTurn because I need it to be controlled by the game() function - the turn is updated early, but the user UI may only be interacted with after the intervals are cleared, which is determined by game()'s call in cpuMoves. Otherwise it'd cause problems with the intervals.
         canDiscard = true; //*flag variable
 
         gEventsrc = "";
+
+        console.log("user draws");
     }
+
+    if(pile == deckpile) var name = "deckpile"; else var name = "discardpile"; //!
+    console.log("[Note] " + this.id + " draws -----------------------------"); //!
+    console.log(pile[0]); //!
+    console.log(this); //!
+    console.log(name); //!
+    console.log(deckpile); //!
 
     for(var i = 0; i < quantity; i++)
     {
@@ -215,16 +236,25 @@ Player.prototype.discardCards = function(card, isPlayer) //card is the position 
         gEventsrc = "";
 
         nextTurn();
-        game();
     }
+
+    console.log("[Note] " + this.id + " discards -----------------------------"); //!
+    console.log(this.hand[card]); //!
 
     discardpile.unshift(this.hand.splice(card, 1)[0]); //*[0] because splice returns an array!!!!! (in lesson)
 
+    opDiscard2.style.boxShadow = null;
+    opDeck2.style.boxShadow = null;
+
+    console.log(discardpile); //!
     if(this.determineHandValue() == 31)
     {
         pEventsrc = "";
-        gameEnd = true;
+        thirtyone = true;
     }
+    
+    if(isPlayer)
+        game();
 
     display();
 }
@@ -244,8 +274,12 @@ Player.prototype.knockTurn = function(isPlayer)
     }
 
     gEventsrc = this.id.toUpperCase() + " knocks";
+    console.log(gEventsrc); //!
     this.knocker = true;
     knocked = true;
+
+    opDiscard2.style.boxShadow = null;
+    opDeck2.style.boxShadow = null;
 
     rInfosrc += "<br/> Knocker: " + this.id.toUpperCase();
     

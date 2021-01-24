@@ -1,13 +1,13 @@
 
 body
 {
+    background-color: azure;
     text-align: center;
-    line-height: 42px;
+    line-height: 90%;
     border-radius: 25px;
     border: 2px solid black;
-    width: 1040px;
-    margin: 5px 400px 0px 400px;
-    background-color: azure;
+    width: 50%;
+    margin: 0 auto;
 }
 
 h1
@@ -18,68 +18,64 @@ h1
 
 div#matchBox
 {
-    border-radius: 50px;
+    background-color: aliceblue;
+    border-radius: 25px;
     border: 2px solid black;
     margin: auto;
     text-align: center;
-    line-height: 20px;
-    width: 675px;
-    background-color: aliceblue;
+    line-height: 175%;
+    width: 65%;
     padding: 0px 0px 15px 0px;
 }
 
 button#reset
 {
-    font-family: Bastion;
-    font-size: 30px;
     background-color: azure;
     border: white;
+    font-family: Bastion;
+    font-size: 90%;
 }
 
 div#scoreText
 {
     font-family: Andalus;
-    font-size: 50px;
+    font-size: 120%;
     text-align: center;
     border-bottom: solid;
-    width: 300px;
+    width: 30%;
     margin: auto;
-    padding: 0px 0px 25px 0px;
+    padding: 0px 0px 1% 0px;
 }
 
 div#cpuComment
 {
     border-top: solid;
     font-family: Andalus;
-    font-size: 30px;
+    font-size: 90%;
     position: absolute;
-    left: 10px;
-    top: 400px;
+    left: 1%;
+    top: 50%;
     text-align: left;
     padding: 20px 0px 10px 20px;
-    width: 350px;
+    width: 20%;
 }
 
 a#mode
 {
     font-family: Bastion;
-    font-size: 20px;
+    font-size: 100%;
     text-decoration: none;
     position: absolute;
-    left: 30px;
-    top: 300px;
-}
-
-a#gallerymenu
-{
-    position: absolute;
-    top: 10px;
-    left: 30px;
+    left: 3%;
+    top: 40%;
 }
 
 a#htp
 {
+    display: block;
     font-family: Bastion;
-    font-size: 18px;
+    font-size: 80%;
     text-decoration: none;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }

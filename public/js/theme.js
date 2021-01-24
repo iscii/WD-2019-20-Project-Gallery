@@ -8,6 +8,6 @@ function setTheme(theme) {
     document.documentElement.className = theme;
 }
 function toggleTheme() {
-    let theme = localStorage.getItem("theme") == "dark" ? "light" : "dark";
+    let theme = document.documentElement.classList[0] == "dark" ? "light" : "dark";
     setTheme(theme);
 }

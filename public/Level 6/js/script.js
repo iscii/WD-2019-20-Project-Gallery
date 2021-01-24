@@ -26,6 +26,7 @@ function initialize()
     opP2Strikes = document.getElementById("p2strikes");
     opP3Strikes = document.getElementById("p3strikes");
     opP4Strikes = document.getElementById("p4strikes");
+    opPLabels = document.getElementsByClassName("playerlabel");
 
     //Create players
     players = [new Player("p1"), new Player("p2"), new Player("p3"), new Player("p4")];
@@ -37,6 +38,7 @@ function initialize()
     awaitNextRound = false;
     canDiscard = false;
     victor = null;
+    thirtyone = null;
 
     //Create element vars
     pEventsrc = "";
@@ -49,6 +51,7 @@ function initialize()
     turn = dealer + 1;
     if(dealer + 1 > p4) //*if there's a way to loop it without this conditional, pls do tell
         turn = p1;
+    console.log("First turn: " + turn); //!
 
     display();
 }
@@ -60,6 +63,7 @@ function startRound()
     gameEnd = false;
     awaitNextRound = false;
     knocked = false;
+    thirtyone = null;
     losers = []; 
 
     //Start deckpile
@@ -68,9 +72,11 @@ function startRound()
 
     deckpile.generateStandardDeck();
     deckpile.shuffleDeck();
+    console.log(deckpile); //!
 
     //Initialize discard pile. Placed before card deals since display requires discardpile to be initialized.
     discardpile.push(deckpile.shift());
+    console.log(discardpile); //!
 
     //Follow-up rounds initiations
     if(round != 1)
@@ -95,15 +101,22 @@ function startRound()
     rInfosrc = "Round " + round + "<br/>" + "Dealer: " + players[dealer].id.toUpperCase();
     tallysrc = "";
 
+    console.log("[Note] Dealer: " + players[dealer].id + " --------------------------"); //!
+
     //Deal cards
     for(var i = 0; i < 4; i++)
     {  
         if(!players[i].strikes) //skips players that are out
+        {
+            console.log(players[i].id + " is out! Did not draw");
             continue;
+        }   
         players[i].drawCards(3, deckpile);
     }
+    console.log(players); //!
     
-    game();
+    console.log("[Next Round] --------------------------------------------------------"); //!
+    if(!victor) game();
     display();
 }
 
@@ -115,7 +128,7 @@ function cpuMoves()
     //check if the drawpile is empty.
     if(checkEmpty()) return;
     
-    if(turn == p1 || players[turn].knocker || gameEnd)  //*<- remove this to turn user player into a bot
+    if(turn == p1 || players[turn].knocker || gameEnd || awaitNextRound)  //*<- remove this to turn user player into a bot
     { 
         clearInterval(cpuInterval); //?for some reason, doing game(); and then return clearInterval(cpuInterval); would call the game() statement but not the clearInterval statement. In fact, it'd call nothing below game(). very strange.
         return game();
@@ -129,15 +142,23 @@ function cpuMoves()
     }
     //draw
     if(discardpile[0] && (players[turn].determineHandValue(discardpile[0], false, true)) > players[turn].determineHandValue()) //check if discard has a card and if the card will benefit the hand.
+    {
+        opDiscard2.style.boxShadow = "0 0 10px white";
         players[turn].drawCards(1, discardpile);
+        opDeck2.style.boxShadow = null;
+    }
     else //from deck
+    {
+        opDeck2.style.boxShadow = "0 0 10px white";
         players[turn].drawCards(1, deckpile);
-        
+        opDiscard2.style.boxShadow = null;
+    }
+    
     //cpu discard
     setTimeout(function(){
         players[turn].discardCards(players[turn].determineHandValue(null, true));
         nextTurn();
-    }, 500);
+    }, 500); //500
 }
 
 //game managers
@@ -145,7 +166,7 @@ function game()
 {
     gEventsrc = "";
     //hold turn's value to check for lowest score
-    if(players[turn].knocker || gameEnd)
+    if(players[turn].knocker || gameEnd || thirtyone)
         return tally();
     
     if(turn == p1)
@@ -154,11 +175,11 @@ function game()
         pEventsrc = players[turn].id.toUpperCase() + "'s turn"; //when the player is the first turn of a round, nextTurn is not called so the display text must be declared here.
         userTurn = true;
         display();
-        return 
+        return console.log("user's turn"); //!
     }
     userTurn = false;
 
-    cpuInterval = setInterval(cpuMoves, 1500); //create a variable that holds an interval
+    cpuInterval = setInterval(cpuMoves, 1500); //create a variable that holds an interval //1500
 }
 function nextTurn()
 {
@@ -172,7 +193,8 @@ function nextTurn()
         pEventsrc = players[turn].id.toUpperCase() + " is out!";
     else if(!players[turn].knocker)
         pEventsrc = players[turn].id.toUpperCase() + "'s turn";
-    
+
+    console.log(pEventsrc); //!
     display();
 }
 function checkEmpty()
@@ -200,6 +222,7 @@ function determineDealer()
         return determineDealer();
         
     rInfosrc += "<br/>" + "Dealer: " + players[dealer].id.toUpperCase();
+    console.log("Dealer: " + dealer); //!
 }
 function tally()
 {
@@ -219,13 +242,15 @@ function tally()
     {
         if(players[ingame[i]].determineHandValue() == 31)
         {
+            console.log(players[ingame[i]].id + " 31")
             gEventsrc = players[ingame[i]].id.toUpperCase() + " 31!";
-            for(var j = 0; j < players.length; j++)
+            for(var j = 0; j < ingame.length; j++)
             {
-                if(j == ingame[i])
+                tallysrc += "P" + (ingame[j] + 1) + ": " + players[ingame[j]].determineHandValue() + "<br/>";
+                if(ingame[j] == ingame[i])
                     continue;
-                losers.push(j);
-                players[j].strikes--;
+                losers.push(ingame[j]);
+                players[ingame[j]].strikes--;
             }
             checkEndGame();
             return display();
@@ -267,7 +292,10 @@ function tally()
         }
 
         if(!players[x].strikes) //if this round eliminates the player, set isout to true.
-            players[x].isout = true; 
+            players[x].isout = true;
+
+        console.log(players[x]); //!
+        console.log(players[x].determineHandValue()); //!
     }
 
     checkEndGame();
@@ -277,12 +305,16 @@ function tally()
 function checkEndGame()
 {
     var ingame = [];
-    for(var i = 0; i < players.length; i++)
+    for(var i = 0; i < players.length; i++) 
         if(players[i].strikes)
             ingame.push(i);
 
     if(ingame.length == 1)
-        victor = ingame[0];
+    {
+        victor = ingame[0] + 1; //making it 1-4 instead of 0-3 since !victor is a condition that needs to be checked and if victor is 0, it sends true, which is not what I want it to do.
+        gameEnd = true;
+        console.log(victor);
+    }
 }
 
 function toggleInstructions()
@@ -322,7 +354,7 @@ function display()
         eval("opP" + (i + 1)).innerHTML = ""; //*resets the divs so that the images don't build onto each other (see bug 1)
         //if a player is out, show empty cards instead (addresses format issue 4.18.2020)
         //*cannot put this inside the for loop below since their hand length is 0 so the loop isn't even called for them
-        if(!players[i].strikes && (!players[i].isout || (i != victor)) || !round) //check for !knocked so that it doesn't display an empty image upon reveal and tally
+        if(!players[i].strikes && (!players[i].isout || (i != (victor - 1))) || !round) //check for !knocked so that it doesn't display an empty image upon reveal and tally
         {
             for(var o = 0; o < 3; o++)
             {
@@ -337,7 +369,7 @@ function display()
         {
             var image = document.createElement("img");
             image.id = "hand " + o; //*o for card's position in hand (for discard)
-            //? Is it possible to give the element a class that'll have style properties defined in css? I tried it but the class property never appeared in 
+            //? Is it possible to give the element a class that'll have style properties defined in css? I tried it but the class property never appeared in console.log, whilst id and src did.
 
             image.src = "./images/cards/" + players[i].hand[o].rank + "-" + players[i].hand[o].suit + ".png"; //*preset shown cards
 
@@ -360,19 +392,25 @@ function display()
     }
 
     //Animation control
-    if(userTurn && !canDiscard)
+    if(userTurn && !awaitNextRound)
     {   
         opDeckAnim.className = "pileanim";
         opDiscardAnim.className = "pileanim";
-        opDiscard2.style.boxShadow = "0 0 10px white";
-        opDeck2.style.boxShadow = "0 0 10px white";
+        if(!canDiscard)
+        {
+            opDiscard2.style.boxShadow = "0 0 10px white";
+            opDeck2.style.boxShadow = "0 0 10px white";
+        }
+        else
+        {    
+            opDiscard2.style.boxShadow = null;
+            opDeck2.style.boxShadow = null;
+        }
     }
     else
     {
         opDeckAnim.className = null;
         opDiscardAnim.className = null;
-        opDiscard2.style.boxShadow = null;
-        opDeck2.style.boxShadow = null;
     }
 
     //Strikes display
@@ -380,27 +418,34 @@ function display()
     {
         eval("opP" + (i + 1) + "Strikes").innerHTML = players[i].strikes;
         if(round)
-            eval("opP" + (i + 1) + "Strikes").style.display = "inline-block";
+            for(var j = 0; j < opPLabels.length; j++)
+                opPLabels[j].style.display = "inline-block";
+        else
+            for(var j = 0; j < opPLabels.length; j++)
+                opPLabels[j].style.display = "none";
     }
 
     //Please email me if there's a simpler way to do these conditionals as well.
     //Next round button display
-    if(awaitNextRound && (!victor || gameEnd))
+    if(awaitNextRound && !gameEnd)
     {
-        if(losers.length > 1)
-            pEventsrc = "Losers: ";
-        else
-            pEventsrc = "Loser: ";
-        
-        for(var i = 0; i < losers.length; i++)
-            pEventsrc += players[losers[i]].id.toUpperCase() + " ";
+        if(!thirtyone)
+        {
+            if(losers.length > 1)
+                pEventsrc = "Losers: ";
+            else
+                pEventsrc = "Loser: ";
+            
+            for(var i = 0; i < losers.length; i++)
+                pEventsrc += players[losers[i]].id.toUpperCase() + " ";
+        }
 
         opRounds.style.display = "block";
     }
     else
     {
         if(victor)
-            pEventsrc = players[victor].id.toUpperCase() + " Wins!";
+            pEventsrc = players[victor - 1].id.toUpperCase() + " Wins!";
         opRounds.style.display = "none";
     }
 
