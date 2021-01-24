@@ -1,7 +1,7 @@
 
 body
 {
-    background-color: azure;
+    background-color: rgb(199, 199, 199);
     text-align: center;
     line-height: 90%;
     border-radius: 25px;
@@ -18,7 +18,7 @@ h1
 
 div#matchBox
 {
-    background-color: aliceblue;
+    background-color: rgb(199, 199, 199);
     border-radius: 25px;
     border: 2px solid black;
     margin: auto;
@@ -30,8 +30,8 @@ div#matchBox
 
 button#reset
 {
-    background-color: azure;
-    border: white;
+    background-color: transparent;
+    border: transparent;
     font-family: Bastion;
     font-size: 90%;
 }

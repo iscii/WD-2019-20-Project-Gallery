@@ -1,7 +1,7 @@
 
 body
 {
-    background-color: azure;
+    background-color: rgb(199, 199, 199);
     border: 2px solid black;
     border-radius: 25px;
     font-family: Andalus;
@@ -45,7 +45,7 @@ h4
 
 div#main
 {
-    background-color: aliceblue;
+    background-color: rgb(199, 199, 199);
     font: bold;
     text-align: left;
     font-family: Andalus;

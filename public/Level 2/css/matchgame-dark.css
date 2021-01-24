@@ -27,8 +27,8 @@ div#matchBox {
 
 button#reset {
     color: #FC3939;
-    background-color: #181818;
-    border: white;
+    background-color: transparent;
+    border: transparent;
     font-family: Bastion;
     font-size: 90%;
 }
