@@ -1,12 +1,13 @@
 
 body
 {
-    background-color: #181818;
+    background-color: rgb(31, 31, 31);
     border: 2px solid #FC9D9D;
     border-radius: 25px;
     font-family: Andalus;
     font-size: 90%;
     margin: 0 auto;
+    margin-top: 1%;
     padding: 2% 2% 1% 2%;
     text-align: center;
     width: 50%;
@@ -50,7 +51,6 @@ h4
 div#main
 {
     color: #FC9D9D;
-    background-color: #191919;
     font: bold;
     text-align: left;
     font-family: Andalus;
