@@ -451,7 +451,7 @@ function dispSimTotals(){ //these get a bit redundant since i didn't plan it aaa
     var regBalDiff = parseFloat(dRegisterBal() - totalCashSales).toFixed(2);
     var regBalResult;
     var eSimTotals = "<span class = 'simtotals'><span class = 'simhead'>Sim <span class = 'simnum'>" + simNum + "</span> Totals</span>"
-                     "<br/><span class = 'simlabeltab'>Item -- Revenue (Count)</span>";
+                     "<br/><span class = 'simlabeltab'>Item - Revenue (Count)</span>";
     //sim item totals
     for(i = 0; i < FOODTYPES.length; i++){
         for(x = 0; x < eval(FOODTYPES[i]).length; x++){
@@ -462,16 +462,16 @@ function dispSimTotals(){ //these get a bit redundant since i didn't plan it aaa
 
             itemCount = eval(simTotalTypes[i])[x].split(";")[0];
             itemCost = eval(simTotalTypes[i])[x].split(";")[1];
-            eSimTotals += "<br/><span class = 'simitems'><span class = 'simitemname'>" + itemName + "</span> -- <span class = 'simitemcost'>$" 
+            eSimTotals += "<br/><span class = 'simitems'><span class = 'simitemname'>" + itemName + "</span> - <span class = 'simitemcost'>$" 
             + itemCost + "</span> (<span class = 'simitemcount'>" + itemCount + "</span>)</span>";
         }
     } //.toFixed is necessary here for the float to display as "9.70" instead of "9.7"
     //sim sale totals
-    eSimTotals += "<br/><span class = 'simsales'><span class = 'simsalenumhead'>Total Sales</span> -- <span class = 'simsalenumvalue'>$" + simSalesTotal + "</span> (<span class = 'simsalenumnum'>" + (numElecSales + numCashSales) + "</span>)" + 
-                  "<br/><span class = 'simsalespecific'><span class = 'simsalenumhead'>Electronic</span> -- <span class = 'simsalenumvalue'>$" + parseFloat(totalElecSales).toFixed(2) + "</span> (<span class = 'simsalenumnum'>" + numElecSales + "</span>)" + 
-                  "<br/><span class = 'simsalenumhead'>Cash</span> -- <span class = 'simsalenumvalue'>$" + parseFloat(totalCashSales).toFixed(2) + "</span> (<span class = 'simsalenumnum'>" + numCashSales + "</span>)</span></span>";
+    eSimTotals += "<br/><span class = 'simsales'><span class = 'simsalenumhead'>Total Sales</span> - <span class = 'simsalenumvalue'>$" + simSalesTotal + "</span> (<span class = 'simsalenumnum'>" + (numElecSales + numCashSales) + "</span>)" + 
+                  "<br/><span class = 'simsalespecific'><span class = 'simsalenumhead'>Electronic</span> - <span class = 'simsalenumvalue'>$" + parseFloat(totalElecSales).toFixed(2) + "</span> (<span class = 'simsalenumnum'>" + numElecSales + "</span>)" + 
+                  "<br/><span class = 'simsalenumhead'>Cash</span> - <span class = 'simsalenumvalue'>$" + parseFloat(totalCashSales).toFixed(2) + "</span> (<span class = 'simsalenumnum'>" + numCashSales + "</span>)</span></span>";
     //sim register balance
-    eSimTotals += "<br/><span class = 'regbal'><span class = 'regbalhead'>Register Balance</span> -- <span class = 'regbalvalue'>$" + dRegisterBal() + "</span>";
+    eSimTotals += "<br/><span class = 'regbal'><span class = 'regbalhead'>Register Balance</span> - <span class = 'regbalvalue'>$" + dRegisterBal() + "</span>";
     if(regBalDiff == 100)//determines if under, even, or over
         regBalResult = "Even";
     else if(regBalDiff > 100)

@@ -10,7 +10,7 @@
 				src: url(fonts/LakehurstGothic.ttf);
 			}
 			body{
-				background: rgb(17, 17, 17);
+				background: rgb(31, 31, 31);
 				font-family: Lakehurst Gothic;
 				color: rgb(255, 219, 233);
 				border: 2px solid white;
@@ -18,6 +18,7 @@
 				width: 65%;
 				height: 97vh;
 				margin: auto;
+				margin-top: 1.5vh;
 			}
 			h1, h4{
 				text-align: center;
@@ -30,24 +31,24 @@
 			}
 			#content{
 				margin: auto;
-				height: 80%;
-				padding-left: 1%;
-				padding-right: 1%;
-				padding-top: .5%;
-				padding-bottom: .5%;
+				border-bottom-left-radius: 50px;
+				border-bottom-right-radius: 50px;
+				height: 77.5%;
+				padding: .5% 1% .5% 1%;
 				text-align: left;
+				overflow-y: auto;
 			}
 			.bigtext{
 				font-size: 130%;
 				color: rgb(255, 82, 82);
 			}
 			.medtext{
-				font-size: 120%;
+				font-size: 115%;
 				color: rgb(57, 255, 103);
 				margin-left: 1%;
 			}
 			.smoltext{
-				font-size: 110%;
+				font-size: 105%;
 				margin-left: 2%;
 			}
 			#ac{
@@ -77,6 +78,7 @@
 			}
 			button:hover, a:hover, #classic:hover, #salvo:hover{
 				text-shadow: 0 0 10px white;
+				cursor: pointer;
 			}
 			button:active, a:active, #classic:active, #salvo:active{ /*if this is put before :hover, :hover overrides the text-shadow style in :active. Sequencing matters in css.*/
 				text-shadow: none;

@@ -4,7 +4,7 @@
     <title></title>
     <script>
         window.onload = () => {
-            window.location = "Match Game-" + localStorage.getItem("theme") + ".html";
+            window.location = localStorage.getItem("theme") ? "Match Game-" + localStorage.getItem("theme") + ".html" : "Match Game-dark.html";
         }
     </script>
 </head>

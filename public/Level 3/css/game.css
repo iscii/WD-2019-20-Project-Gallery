@@ -83,7 +83,6 @@ div#cUIText2
     text-align: center;
     font-size: 500%;
     margin: 0 auto;
-    margin-top: 10%;
     width: 100%;
 }
 table#log
@@ -91,17 +90,15 @@ table#log
     color: rgb(143, 143, 255);
     border: 2px solid rgb(139, 133, 133);
     border-radius: 20px;
-    
     width: 25%;
-
     padding: 0.5%;
-
     float: right;
     margin-right: 2%;
 }
 td
 {
     border: 2px solid rgb(211, 99, 99);
+    width: 100%;
     border-radius: 5px;
     padding-left: 2%;
     padding-right: 4%;

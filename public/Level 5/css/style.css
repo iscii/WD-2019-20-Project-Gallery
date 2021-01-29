@@ -91,7 +91,7 @@ button#simButton{
     border-radius: 15px;
 }
 .simtotals{
-    padding-top: 0.01%;
+    padding:0.05%;
     display: inline-block;  
     text-align: center;
     line-height: 85%;
@@ -134,11 +134,11 @@ button#simButton{
     font-size: 70%;
 }
 span#itemavgs, #saleavgs{
-    margin-top: 2%;
+    margin-top: 1%;
     text-align: center;
     display: inline-block;
     line-height: 150%;
-    font-size: 90%;
+    font-size: 68%;
     width: 49%;
 }
 span#saleavgs{
@@ -150,7 +150,8 @@ span#simcount{
 h1{
     margin: 0 auto;
     width: fit-content;
-    margin-top: 2%;
+    margin-top: 1%;
+    font-size: 100%;
 }
 .display{
     display: inline-block;
@@ -168,7 +169,7 @@ div#logframe{
     overflow: scroll;
     color:#FC3939;
     font: Aharoni;
-    font-size: 200%;
+    font-size: 125%;
 }
 div#dataframe{
     margin-left: 10%;
@@ -275,19 +276,18 @@ form#repeatForm, #shiftForm{
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 12%;
+    height: 8%;
     text-align: center;
-    margin-top: 2%;
 }
 input#inputrepeat, #inputhours{
     color: rgb(151, 255, 53);
     border-radius: 10px;
     background: rgb(92, 92, 92);
     border: none;
-    height: 70%;
+    height: 60%;
     width: 50%;
     text-align: center;
-    font-size: 140%;
+    font-size: 80%;
 }
 input::placeholder{
     color: rgb(255, 189, 255);

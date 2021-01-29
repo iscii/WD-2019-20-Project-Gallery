@@ -1,6 +1,6 @@
 body
 {
-    background-color: #181818;
+    background-color:rgb(31, 31, 31);
 }
 
 div#board
@@ -35,13 +35,8 @@ div#eventDisplay
 
 div#moveSelect
 {
-    /*
-    margin-top: 10.5%;
-    margin-left: 6%;
-    float: left;
-    */
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 10%;
     text-align: center;
     width: 20%;
     color: lightcoral;
@@ -67,7 +62,7 @@ a#instructions
     margin: 0 auto;
     width: 45%;
     text-align: center;
-    margin-top: 15%;
+    margin-top: 10%;
     font-family: Aharoni;
     font-size: 150%;
     color: lightcoral;
