@@ -13,3 +13,7 @@ function loadLevel(level) {
     content.replaceChild(obj, content.lastChild);
     document.getElementById("content-desc").innerHTML = "Level " + level + "\n" + LEVELDESC[level - 1];;
 }
+
+function display() {
+
+}
