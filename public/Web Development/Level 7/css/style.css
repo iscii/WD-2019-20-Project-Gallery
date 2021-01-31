@@ -195,7 +195,14 @@ a {
     margin-left: 20%;
     padding: 2%;
     width: 70%;
+    height: 90%;
+    overflow-y: auto;
 }
+ 
+ ::-webkit-scrollbar-track {
+    margin-top: 50px;
+    margin-bottom: 50px;
+ }
 
 .bigtext {
     font-size: 110%;
