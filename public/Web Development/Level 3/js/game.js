@@ -1,3 +1,5 @@
+console.log = function(){}; //disables console logs for deploy
+
 const arsenal = ["rock", "paper", "scissor"];
 
 function initialize()

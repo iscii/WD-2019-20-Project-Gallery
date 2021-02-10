@@ -2,7 +2,7 @@
 <html class="dark">
 
 <head>
-	
+
 	<title>iscii</title>
 	<script src="js/theme.js"></script>
 	<script src="js/script.js"></script>
@@ -20,7 +20,7 @@
 		<label id="themeswitch" class="switch">
 			<input type="checkbox">
 			<span onclick="toggleTheme()" class="slider noselect">
-			L&nbsp;&nbsp;D
+				L&nbsp;&nbsp;D
 			</span>
 		</label>
 	</div>
@@ -29,58 +29,63 @@
 			<div id="profile">
 				Issac Zheng &lt;iscii&gt;
 			</div>
-			<div class="category-container" id="categories">
-				<div class="category">
-					<div class="category-title">
+			<div class="cat-container" id="categories">
+				<div class="cat">
+					<div class="cat-title">
 						Links
 					</div>
 				</div>
-				<div class="category">
-					<div class="category-title">
+				<div class="cat">
+					<div class="cat-title">
 						isciiBot
 					</div>
 				</div>
-				<div class="category category-dropdown">
-					<div class="category-title">
-						Web Development<!--when clicked, reveal general description of web dev-->
+				<div class="cat cat-dropdown">
+					<div class="cat-title" onclick="dropDown(this)">
+						Web Development
+						<!--when clicked, reveal general description of web dev-->
 					</div>
-					<div class="category-item" onclick="loadLevel(1);">
-						Level 1
-					</div>
-					<div class="category-item" onclick="loadLevel(2);">
-						Level 2
-					</div>
-					<div class="category-item" onclick="loadLevel(3);">
-						Level 3
-					</div>
-					<div class="category-item" onclick="loadLevel(4);">
-						Level 4
-					</div>
-					<div class="category-item" onclick="loadLevel(5);">
-						Level 5
-					</div>
-					<div class="category-item" onclick="loadLevel(6);">
-						Level 6
-					</div>
-					<div class="category-item" onclick="loadLevel(7);">
-						Level 7
+					<div hidden class="cat-items">
+						<div class="cat-item" onclick="loadLevel(1);">
+							Level 1
+						</div>
+						<div class="cat-item" onclick="loadLevel(2);">
+							Level 2
+						</div>
+						<div class="cat-item" onclick="loadLevel(3);">
+							Level 3
+						</div>
+						<div class="cat-item" onclick="loadLevel(4);">
+							Level 4
+						</div>
+						<div class="cat-item" onclick="loadLevel(5);">
+							Level 5
+						</div>
+						<div class="cat-item" onclick="loadLevel(6);">
+							Level 6
+						</div>
+						<div class="cat-item" onclick="loadLevel(7);">
+							Level 7
+						</div>
 					</div>
 				</div>
-				<div class="category category-dropdown">
-					<div class="category-title">
+				<div class="cat cat-dropdown">
+					<div class="cat-title" onclick="dropDown(this)">
 						Games
 					</div>
-					<div class="category-item">
-						Headache
+					<div hidden class="cat-items">
+						<div class="cat-item">
+							Headache
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="content-container">
 			<div id="content-desc">
-				
+
 			</div>
-			
+
 			<div id="content">
 
 			</div>

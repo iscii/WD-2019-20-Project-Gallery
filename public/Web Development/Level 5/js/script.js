@@ -1,3 +1,4 @@
+console.log = function(){}; //disables console logs for deploy
 
 //currency
 const B20 = 0, B10 = 1, B5 = 2, B1 = 3, Q = 4, D = 5, N = 6, P = 7;

@@ -1,3 +1,5 @@
+console.log = function(){}; //disables console logs for deploy
+
 const USER = 0, CPU = 1;
 
 //Initialization functions

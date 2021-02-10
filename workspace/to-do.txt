@@ -1,8 +1,12 @@
+2/8
+- dropdown for categories. make the colors change to pink when folded, back to dark pink when revealed
+- add link to aster
+- add link to isciiBot
+- add link to install unity games
+
+1/16
 - put every project in one page. load them differently upon buttons tho. like have a slider or smtn
 	- remove back to gallery
 	- fit them all to screen
 	- modify their themes to blend in with general website theme
 	- autoset their themes based on website theme
-- add link to aster
-- add link to isciiBot
-- add link to install unity games

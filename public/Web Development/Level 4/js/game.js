@@ -1,4 +1,5 @@
-//draft 1 - basic Tic Tac Toe Functionalities
+console.log = function(){}; //disables console logs for deploy
+
 const MOVES = ["x", "o"];
 const GRID_1 = 1
 const ISLOCKED = 0;

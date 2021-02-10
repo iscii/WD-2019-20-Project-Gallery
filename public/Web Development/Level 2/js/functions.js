@@ -1,3 +1,4 @@
+console.log = function(){}; //disables console logs for deploy
 
 function assignIDs()
 {

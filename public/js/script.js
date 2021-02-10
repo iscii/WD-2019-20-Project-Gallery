@@ -14,6 +14,13 @@ function loadLevel(level) {
     document.getElementById("content-desc").innerHTML = "Level " + level + "\n" + LEVELDESC[level - 1];;
 }
 
+function dropDown(catEl) {
+    let items = catEl.parentElement.children[1].classList;
+    if(items.contains("cat-expanded"))
+        return items.remove("cat-expanded");
+    items.add("cat-expanded");
+}
+
 function display() {
 
 }

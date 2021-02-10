@@ -1,3 +1,5 @@
+console.log = function(){}; //disables console logs for deploy
+
 //debugging this program has been a pain in the arse due to how objects work and the difficulty of replicating bugged situations e.e
 function initialize()
 {
