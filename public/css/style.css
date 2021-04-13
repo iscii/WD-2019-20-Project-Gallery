@@ -215,11 +215,7 @@ input:checked+.slider:before {
     height: 70%;
 }
 
-.linkCard {
-    
-}
-
-.levelContent {
+.levelcontent {
     width: 100%;
     height: 100%;
 }
